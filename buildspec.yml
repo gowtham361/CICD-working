@@ -20,3 +20,6 @@ artifacts:
     discard-paths: yes
 
             
+- echo "Replacing placeholder with current date"
+- DATE=$(date '+%Y-%m-%d %H:%M:%S')
+- sed -i "s/PLACEHOLDER_DATE/$DATE/" index.html
