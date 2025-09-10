@@ -1,9 +1,10 @@
 version: 0.0
 os: linux
 files:
-  - source: index.html
+  - source: /index.html
     destination: /var/www/html/
-    overwrite: true
+  - source: /scripts
+    destination: /home/ec2-user/my-app/scripts/
 hooks:
   BeforeInstall:
     - location: scripts/install_dependencies
