@@ -1,34 +1,22 @@
 version: 0.2
 
-phases:
-  install:
-    commands:
-      - echo "Installing required packages"
-      - yum update -y
-      - yum install -y grep sed coreutils
-      - echo "Install phase complete"
-
-  build:
-    commands:
-      - echo "Build phase started"
-      - ls
-      - echo "Checking if 'Congratulations' exists in index.html"
-      - grep "Congratulations" index.html
-      - echo "Replacing PLACEHOLDER date with current date"
-      - |
-        DATE=$(date '+%Y-%m-%d %H:%M:%S')
-        sed -i "s/PLACEHOLDER_DATE/$DATE/" index.html
-
-  post_build:
-    commands:
-      - echo "Post-build phase complete"
-
+phases: 
+    build:
+        commands:
+            - echo "Build block"
+            - ls
+            - echo "Running tests to check if "Congratulations" present in index.html file"
+            - grep "Congratulations" index.html
+    post_build:
+        commands:
+            - echo "Post build phase"
 artifacts:
-  files:
-    - scripts/install_dependencies
-    - scripts/start_server
-    - scripts/stop_server
-    - index.html
-    - appspec.yml
-  discard-paths: yes
+    files:
+        - scripts/install_dependencies
+        - scripts/start_server
+        - scripts/stop_server
+        - index.html
+        - appspec.yml
+    discard-paths: yes
 
+            
